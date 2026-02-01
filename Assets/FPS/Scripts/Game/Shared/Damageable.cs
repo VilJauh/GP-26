@@ -22,7 +22,7 @@ namespace Unity.FPS.Game
             }
         }
 
-        public void InflictDamage(float damage, bool isExplosionDamage, GameObject damageSource)
+        public virtual void InflictDamage(float damage, bool isExplosionDamage, GameObject damageSource)
         {
             if (Health)
             {
