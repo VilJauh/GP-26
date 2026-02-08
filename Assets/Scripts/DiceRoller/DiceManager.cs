@@ -28,9 +28,12 @@ namespace AA0000
 
 		private void Update()
 		{
-			if (Mouse.current.leftButton.wasPressedThisFrame || Keyboard.current[activationKey].wasPressedThisFrame)// && !isAnyDiceRolling)
+			if (Keyboard.current[activationKey].wasPressedThisFrame)
 			{
-				RollAllDice();
+				if (isAnyDiceRolling == false)
+				{
+					RollAllDice();
+				}
 			}
 		}
 

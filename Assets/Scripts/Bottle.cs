@@ -54,7 +54,8 @@ namespace AE9730
         public void ChangeLiquidAmount(float changeAmount)
         {
             //TODO: Change the amount of liquid and safeguard against going below or over the capacity of the bottle IF cap is off
-            if (isCapOn == false && liquidAmount > minimumLiquidCapacity) { 
+            if (isCapOn == false && liquidAmount > minimumLiquidCapacity) 
+            { 
                 liquidAmount -= changeAmount;
                 Debug.Log($"Liquid amount changed by -{changeAmount}");
                 Debug.Log($"Liquid amount in bottle {liquidAmount}");
