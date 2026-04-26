@@ -6,9 +6,11 @@ public class Collectible : MonoBehaviour
     public static event Action OnCollected;
     public static int total;
 
-    public float amplitude = 2;
-    public float speed = 1.5f;
-    Vector3 initPos;
+    [SerializeField]
+    private float amplitude = 2;
+    [SerializeField]
+    private float speed = 1.5f;
+    private Vector3 initPos;
 
     private void Awake()
     {

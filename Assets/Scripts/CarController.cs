@@ -15,6 +15,9 @@ public class CarController : MonoBehaviour
     private TMPro.TextMeshProUGUI uiText;
 
     [SerializeField]
+    private TMPro.TextMeshProUGUI speedText;
+
+    [SerializeField]
     private float torque = 200f;
     [SerializeField]
     private float brakeTorque = 400f;
@@ -22,8 +25,14 @@ public class CarController : MonoBehaviour
 
     private bool reversing = false;
 
+    private Rigidbody rb;
+
+    private float moveInput;
+    private float steerInput;
+
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -35,15 +44,17 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         Gear();
-        //AnimateWheels();
+        GetInput();
+        AnimateWheels();
+        SpeedMeter();
     }
     private void Drive()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (moveInput > 0)
         {
             foreach (var wheel in wheels)
             {
-                wheel.motorTorque = torque;
+                wheel.motorTorque = moveInput * torque;
             }
         }
         else
@@ -56,7 +67,7 @@ public class CarController : MonoBehaviour
     }
     private void Brake()
     {
-        if (Input.GetKey(KeyCode.S))
+        if (moveInput < 0)
         {
             foreach (var wheel in wheels)
             {
@@ -73,11 +84,11 @@ public class CarController : MonoBehaviour
     }
     private void Steer() 
     {
-        if (Input.GetAxis("Horizontal") != 0)
+        if (steerInput != 0)
         {
             for (int i = 0; i < wheels.Length - 2; i++)
             {
-                wheels[i].steerAngle = Input.GetAxis("Horizontal") * maxSteering;
+                wheels[i].steerAngle = steerInput * maxSteering;
             }
         }
         else
@@ -104,7 +115,15 @@ public class CarController : MonoBehaviour
             uiText.text = "D";
             return;
         }
-
+    }
+    private void GetInput()
+    {
+        moveInput = Input.GetAxis("Vertical");
+        steerInput = Input.GetAxis("Horizontal");
+    }
+    private void SpeedMeter()
+    {
+        speedText.text = "Speed: " + Mathf.Ceil(rb.linearVelocity.magnitude * 2f - 1f);
     }
     private void AnimateWheels() 
     {
@@ -115,7 +134,7 @@ public class CarController : MonoBehaviour
         {
             wheels[i].GetWorldPose(out wheelPosition, out wheelRotation);
             wheelMesh[i].transform.position = wheelPosition;
-            wheelMesh[i].transform.rotation = wheelRotation;
+            wheelMesh[i].transform.rotation = wheelRotation * Quaternion.Euler(0f, 0f, 90f);
         }
     }
 }
