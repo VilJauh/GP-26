@@ -3,7 +3,7 @@ using UnityEngine;
 public class CollectibleCount : MonoBehaviour
 {
     private TMPro.TextMeshProUGUI uiText;
-    private int count;
+    public int count;
 
     private void Awake()
     {
