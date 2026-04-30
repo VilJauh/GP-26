@@ -1,0 +1,1 @@
+Ai was used to troubleshoot car controllers wheel turning animation. Tutorial links used: https://youtu.be/0F9nRHhu2-E?si=SaUEQ3q_ajfNA3Xe , https://youtu.be/jJonSISrTqQ?si=L34u36e05IJS10dO , And unity forums
