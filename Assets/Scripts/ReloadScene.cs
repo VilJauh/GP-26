@@ -5,7 +5,7 @@ public class ReloadScene : MonoBehaviour
 {
     public void ReloadCurrentScene()
     {
-        Collectible.total -= Collectible.total;
+        Collectible.total = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

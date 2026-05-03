@@ -254,9 +254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1562ec2e2ad4ad94bb42777380db26ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleRandomizer
-  collectible: {fileID: 8564145456292460462, guid: 2efd71982795ecf48bec299a181d5370,
+  collectibleGO: {fileID: 8564145456292460462, guid: 2efd71982795ecf48bec299a181d5370,
     type: 3}
-  amount: 1
+  amount: 30
   ground: {fileID: 968557928}
 --- !u!4 &148174166
 Transform:
